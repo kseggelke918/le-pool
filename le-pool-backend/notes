@@ -1,0 +1,33 @@
+create game
+    game has_many players
+    has timestamp
+    has an email to link to user
+create player
+    player has name, score
+    belongs_to game
+
+games saved in database
+
+login with email - so extra security required - just a score keeping game app
+games saved under email in database
+
+after login - can open previous game or start new game (2 buttons -1 for list of prev game and 1 to start new game)
+
+list of previous games - click link to view game, pick up where the game left off
+
+new game - 
+    enter in players (name only requirement)
+    how many holes (9 or 18?) -- necessary or just assume 9?
+    how many games (no more games than holes)
+
+start game - 
+    need to track each players points for holes and points for games - track together or separately and then total at the end (player hole total - player game total = FINAL TOTAL)
+
+end game - 
+    end game when all games are scored and all holes are scored
+    run calculations and announce winner and standings 
+
+
+
+
+
