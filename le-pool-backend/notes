@@ -1,7 +1,11 @@
+create user
+    has email, no password
+    user has_many games
 create game
     game has_many players
+    game belongs_to user
     has timestamp
-    has an email to link to user
+    
 create player
     player has name, score
     belongs_to game
