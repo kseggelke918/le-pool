@@ -8,7 +8,7 @@
 
 user = User.create(name: 'Katie', email: 'katie@test.com')
 
-game = Game.create(date: Time.now, game_name: 'seeded_game')
+game = Game.create(date: Time.now, game_name: 'seeded_game', user_id: 1)
 
-player1 = Player.create(name: 'player1')
-player2 = Player.create(name: 'player2')
+player1 = Player.create(name: 'player1', game_id: 1)
+player2 = Player.create(name: 'player2', game_id: 1)
