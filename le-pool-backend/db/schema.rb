@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_08_19_182715) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.integer "golf_score"
-    t.integer "game_score"
+    t.integer "golf_score", default: 0
+    t.integer "game_score", default: 0
     t.integer "game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
