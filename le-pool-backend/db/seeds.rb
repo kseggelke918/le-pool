@@ -17,3 +17,5 @@ player2 = Player.create(name: 'player2', game_id: 1)
 
 player3 = Player.create(name: 'player3', game_id: 2)
 player4 = Player.create(name: 'player4', game_id: 2)
+
+# player5 = Player.create(name: 'player5', game_id: [1, 2])
