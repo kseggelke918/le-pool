@@ -12,10 +12,10 @@ user2 = User.create(name: 'Leah', email: 'leah@test.com')
 game1 = Game.create(date: Time.now, game_name: 'seeded_game_1', user_id: 1)
 game2 = Game.create(date: Time.now, game_name: 'seeded_game_2', user_id: 2)
 
-player1 = Player.create(name: 'player1', game_id: 1)
-player2 = Player.create(name: 'player2', game_id: 1)
+# player1 = Player.create(name: 'player1', game_id: 1)
+# player2 = Player.create(name: 'player2', game_id: 1)
 
-player3 = Player.create(name: 'player3', game_id: 2)
-player4 = Player.create(name: 'player4', game_id: 2)
+# player3 = Player.create(name: 'player3', game_id: 2)
+# player4 = Player.create(name: 'player4', game_id: 2)
 
-# player5 = Player.create(name: 'player5', game_id: [1, 2])
+

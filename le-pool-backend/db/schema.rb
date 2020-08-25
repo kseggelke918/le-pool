@@ -10,35 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_224241) do
+ActiveRecord::Schema.define(version: 2020_08_25_222958) do
 
   create_table "games", force: :cascade do |t|
-    t.datetime "date"
-    t.integer "user_id"
+    t.datetime "date", null: false
+    t.integer "user_id", null: false
+    t.string "game_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "roster", force: :cascade do |t|
+  create_table "roster_entry", force: :cascade do |t|
     t.integer "game_id"
     t.integer "player_id"
-    t.integer "game_score", default: 0
-    t.integer "golf_score", default: 0
+    t.integer "score_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "scores", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
+    t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "games", "users"
 end
