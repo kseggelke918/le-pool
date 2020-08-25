@@ -1,2 +1,3 @@
 class Score < ApplicationRecord
+    
 end
