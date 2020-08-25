@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_25_222958) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "roster_entry", force: :cascade do |t|
+  create_table "roster_entries", force: :cascade do |t|
     t.integer "game_id"
     t.integer "player_id"
     t.integer "score_id"
