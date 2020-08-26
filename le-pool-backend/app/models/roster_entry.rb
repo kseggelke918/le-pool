@@ -1,5 +1,5 @@
 class RosterEntry < ApplicationRecord
-    has_many :players
-    has_many :games
+    belongs_to :player
+    belongs_to :game
     
 end
