@@ -5,6 +5,7 @@ class GamesController < ApplicationController
 
 
     def index 
+        
         # write logged_in method so we can't view games with "logging in"
         games = @user.games 
         # render json of accounts if logged in
