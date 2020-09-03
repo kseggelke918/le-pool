@@ -4,29 +4,32 @@ class PlayersController < ApplicationController
     def index 
         # do we want to show all players or just the players associated with the game selected...
         # need to think about the functionality wanted here
+        # THINKING WE WANT TO RENDER ALL THE PLAYERS FROM '/PLAYERS' AND PLAYERS SPECIFIC TO THE USER AT '/USERS/ID/PLAYERS' 
+        # AND PLAYERS SPECIFIC TO A GAME AT '/USERS/ID/GAMES/ID/PLAYERS'
+        
     end 
 
     def create 
         player = Player.create(player_params)
         if player.save 
-            # render json with serializer
+            render json: player
         else 
-            # render json error
+            render json: {error: 'Error creating player'}
         end 
     end 
 
     def show 
         player = Player.find_by(id: params[:id])
-        # render json with serializer
+        render json: player
     end 
 
     def update 
         player = Player.find_by(id: params[:id])
         player.update(player_params)
         if player.valid?
-            # render serialized json
+            render json :player
         else 
-            # render json error message
+            render json: {error: 'Could not update player'}
         end 
     end 
 
