@@ -1,35 +1,41 @@
 class UsersController < ApplicationController
-    before_action :set_user
-    
-    def create 
-        @user = User.new(user_params)
-        if @user.save 
-            # set session?? session[:user_id] = @user.id
-            render json: @user 
-        else 
-            render json: {error: 'Error creating user'}
-        end 
-    end 
+  def index
+    users = UserResource.all(params)
+    respond_with(users)
+  end
 
-    def show 
-        render json: @user
-    end 
+  def show
+    user = UserResource.find(params)
+    respond_with(user)
+  end
 
-    def update 
-        render json: {message: 'this is the update'}
-    end 
+  def create
+    user = UserResource.build(params)
 
-    def destroy 
-    end 
+    if user.save
+      render jsonapi: user, status: 201
+    else
+      render jsonapi_errors: user
+    end
+  end
 
-    private 
+  def update
+    user = UserResource.find(params)
 
-    def set_user
-        @user = User.find_by(id: params[:id])
-    end 
+    if user.update_attributes
+      render jsonapi: user
+    else
+      render jsonapi_errors: user
+    end
+  end
 
-    def user_params
-        params.require(:user).permit(:name, :email)
-    end 
+  def destroy
+    user = UserResource.find(params)
 
+    if user.destroy
+      render jsonapi: { meta: {} }, status: 200
+    else
+      render jsonapi_errors: user
+    end
+  end
 end

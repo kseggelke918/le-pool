@@ -22,6 +22,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# JSON:API support
+gem 'graphiti-rails'
+
+# ActiveRecord pagination
+gem 'kaminari'
+
+# Automates the process of responding with the requested Content-Type
+gem 'responders'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -31,6 +40,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  gem 'vandal_ui'
 end
 
 group :development do

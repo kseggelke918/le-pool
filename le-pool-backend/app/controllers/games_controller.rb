@@ -1,48 +1,66 @@
 class GamesController < ApplicationController
-    before_action :set_user
-    # write a before action for logged_in: before_action :logged_in?
+  before_action :set_user
+  def index
+    # You just pass all the params through and it knows how to deal with
+    # user_id. This makes /api/games/1 and /api/users/1/games work, and
+    # it also makes /api/users/1/games?include=user work
+    respond_with GameResource.all(params)
+  end
 
-    # need serializers to be written before render statements can be written
+  def show
+    # Same here. /api/games/1?include=user works
+    respond_with GameResource.find(params)
+  end
 
+  def create
+    # the params will include a user_id and should also include
+    # `{ data: { attributes } }`. `GameResource.build` creates
+    # a new Game based on the params (including user_id) and is
+    # ready to save.
+    game = GameResource.build(params)
 
-    def index 
-        
-        # write logged_in method so we can't view games with "logging in"
-        games = @user.games 
-        render json: games
-        # otherwise render error message saying to login
-    end 
+    # try to save the new game
+    if game.save
+      render jsonapi: game, status: 201
+    else
+      render jsonapi_errors: game
+    end
+  end
 
-    def create 
-        game = @user.games.build(game_params)
-        if game.save 
-            render json: game
-        else
-            render json: {error: "Game not created"}
-        end 
-    end 
+  def update
+    # the params will include a user_id and should also include
+    # `{ data: { attributes } }`. In this case, `find` both
+    # finds the object and populates it with the updated attributes.
+    game = GameResource.find(params)
 
-    def show 
-        game = @user.games.find_by(id: params[:id])
-        render json: game
-    end 
+    # try to update the new game
+    if game.update_attributes
+      render jsonapi: game
+    else
+      render jsonapi_errors: game
+    end
+  end
 
-    def update 
-    end 
+  def destroy
+    # the params will include `id` and `user_id` and it will find
+    # the matching GameResource, just like in `show`.
+    game = GameResource.find(params)
 
-    def destroy 
-        game = @user.games.find_by(id: params[:id])
-        game.destroy 
-    end 
+    # try to destroy the game
+    if game.destroy
+      render jsonapi: { meta: {} }, status: 200
+    else
+      render jsonapi_errors: game
+    end
+  end
 
-    private 
+  private
+  def set_user
+    # you don't need this
+  end
 
-    def set_user
-        @user = User.find(params[:user_id])
-    end 
-
-    def game_params
-        params.require(:game).permit(:user_id, :game_name)
-    end 
-
+  def game_params
+    # you also don't need strong params, since you whitelist which things
+    # the API can write to in the resource
+  end 
 end
