@@ -1,47 +1,41 @@
 class PlayersController < ApplicationController
-    # write before action for finding player when refactoring
+  def index
+    players = PlayerResource.all(params)
+    respond_with(players)
+  end
 
-    def index 
-        # do we want to show all players or just the players associated with the game selected...
-        # need to think about the functionality wanted here
-        # THINKING WE WANT TO RENDER ALL THE PLAYERS FROM '/PLAYERS' AND PLAYERS SPECIFIC TO THE USER AT '/USERS/ID/PLAYERS' 
-        # AND PLAYERS SPECIFIC TO A GAME AT '/USERS/ID/GAMES/ID/PLAYERS'
-        
-    end 
+  def show
+    player = PlayerResource.find(params)
+    respond_with(player)
+  end
 
-    def create 
-        player = Player.create(player_params)
-        if player.save 
-            render json: player
-        else 
-            render json: {error: 'Error creating player'}
-        end 
-    end 
+  def create
+    player = PlayerResource.build(params)
 
-    def show 
-        player = Player.find_by(id: params[:id])
-        render json: player
-    end 
+    if player.save
+      render jsonapi: player, status: 201
+    else
+      render jsonapi_errors: player
+    end
+  end
 
-    def update 
-        player = Player.find_by(id: params[:id])
-        player.update(player_params)
-        if player.valid?
-            render json :player
-        else 
-            render json: {error: 'Could not update player'}
-        end 
-    end 
+  def update
+    player = PlayerResource.find(params)
 
-    def destroy 
-        player = Player.find_by(id: params[:id])
-        player.destroy
-    end 
+    if player.update_attributes
+      render jsonapi: player
+    else
+      render jsonapi_errors: player
+    end
+  end
 
-    private 
+  def destroy
+    player = PlayerResource.find(params)
 
-    def player_params
-        # how necessary is this?
-        params.require(:player).permit(:name)
-    end 
+    if player.destroy
+      render jsonapi: { meta: {} }, status: 200
+    else
+      render jsonapi_errors: player
+    end
+  end
 end
