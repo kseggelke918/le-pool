@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-
-  resources :games
-  resources :players
-  resources :scores
   
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
     mount VandalUi::Engine, at: '/vandal'
 
     resources :games
+    resources :players
+    resources :scores
     resources :users do 
       resources :games do 
         resources :players

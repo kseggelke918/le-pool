@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_user
+
   def index
     # You just pass all the params through and it knows how to deal with
     # user_id. This makes /api/games/1 and /api/users/1/games work, and
@@ -54,13 +54,4 @@ class GamesController < ApplicationController
     end
   end
 
-  private
-  def set_user
-    # you don't need this
-  end
-
-  def game_params
-    # you also don't need strong params, since you whitelist which things
-    # the API can write to in the resource
-  end 
 end
