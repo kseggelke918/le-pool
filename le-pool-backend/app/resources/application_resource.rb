@@ -8,4 +8,8 @@ class ApplicationResource < Graphiti::Resource
   self.adapter = Graphiti::Adapters::ActiveRecord
   self.base_url = Rails.application.routes.default_url_options[:host]
   self.endpoint_namespace = '/api'
+
+  def self.allow_request?(*args)
+    true
+  end
 end
