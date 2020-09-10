@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.welcome_page_header {
+  color: blue; 
+  margin: 0 auto;
+  width: 50%;
+}
