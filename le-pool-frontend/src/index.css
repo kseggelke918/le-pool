@@ -5,7 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://image.freepik.com/free-photo/golf-ball-green-grass-ready-be-struck-golf-course-background_126277-320.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
