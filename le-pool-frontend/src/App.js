@@ -3,6 +3,7 @@ import './App.css';
 import Games from './components/games.js'
 import Players from './components/players.js'
 import Signup from './components/signup.js'
+import Login from './components/login.js'
 
 class App extends Component {
   render () {
@@ -14,7 +15,7 @@ class App extends Component {
         <Games />
         <Players />
         <Signup />
-        <p>Login: enter email</p>
+        <Login />
       </div>
     )
   }
