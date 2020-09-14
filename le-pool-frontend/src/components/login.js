@@ -4,7 +4,9 @@ class Login extends Component {
     render() {
         return (
             <div>
-                This is the Login component 
+                <form>
+                    Login: <input placeholder="email" name='email' type='text' />
+                </form> 
             </div>
         )
     }

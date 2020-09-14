@@ -12,10 +12,10 @@ class App extends Component {
         <h1>Le Pool</h1>
         <h3>Established: 2009</h3>
         <h3>Stillwater, MN</h3>
+        <Login />
+        <Signup />
         <Games />
         <Players />
-        <Signup />
-        <Login />
       </div>
     )
   }
