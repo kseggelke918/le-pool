@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Games from './components/games.js'
 import Players from './components/players.js'
+import Signup from './components/signup.js'
 
 class App extends Component {
   render () {
@@ -12,7 +13,7 @@ class App extends Component {
         <h3>Stillwater, MN</h3>
         <Games />
         <Players />
-        <p>Click here to sign up</p>
+        <Signup />
         <p>Login: enter email</p>
       </div>
     )
