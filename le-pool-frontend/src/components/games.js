@@ -4,7 +4,7 @@ class Games extends Component {
     render() {
         return (
             <div>
-                This is the Games component 
+                This would be all the games
             </div>
         )
     }

@@ -11,16 +11,20 @@ class App extends Component {
     return (
       <Router>
         <div className='welcome_page_header'>
-        <h1>Le Pool</h1>
-        <h3>Established: 2009</h3>
-        <h3>Stillwater, MN</h3>
-        <Login />
-        <Signup />
-        <Games />
-        <Players />
-      </div>
+          <h1>Le Pool</h1>
+          <h3>Established: 2009</h3>
+          <h3>Stillwater, MN</h3>
+          <br />
+            <Login />
+            <Signup />
+          <Switch>
+            
+            <Route path= '/games' component={Games} />
+          </Switch>
+            <Players />
+         
+        </div>
       </Router>
-      
     )
   }
 }
