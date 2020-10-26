@@ -32,13 +32,39 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 .welcome_page_header {
-  color: white; 
+  color: white;
   margin: 0 auto;
   width: 50%;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10px;
+  background-color: grey;
+  color: white;
+}
+
+.nav-links {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+}
+
+.nav-links a:hover {
+  font-weight: bold;
 }
