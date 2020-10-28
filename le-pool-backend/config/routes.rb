@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :devise_users
   scope path: ApplicationResource.endpoint_namespace, defaults: { format: :jsonapi } do
     mount VandalUi::Engine, at: '/vandal'
 
