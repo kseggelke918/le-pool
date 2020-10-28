@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_10_28_185817) do
 
   create_table "devise_users", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -26,10 +27,10 @@ ActiveRecord::Schema.define(version: 2020_10_28_185817) do
 
   create_table "games", force: :cascade do |t|
     t.string "game_name"
-    t.integer "user_id"
+    t.integer "devise_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_games_on_user_id"
+    t.index ["devise_user_id"], name: "index_games_on_devise_user_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -49,13 +50,6 @@ ActiveRecord::Schema.define(version: 2020_10_28_185817) do
   end
 
   create_table "scores", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

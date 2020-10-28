@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :games
     resources :players
     resources :scores
-    resources :users do 
+    resources :devise_users do 
       resources :games do 
         resources :players
       end

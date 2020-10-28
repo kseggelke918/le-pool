@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class DeviseUsersController < ApplicationController
   def index
     users = UserResource.all(params)
     respond_with(users)
