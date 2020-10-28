@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = DeviseUser.create(name: 'Katie', email: 'katie@test.com')
-user2 = DeviseUser.create(name: 'Leah', email: 'leah@test.com')
+user1 = DeviseUser.create(name: 'Katie', email: 'katie@test.com', password: '1234')
+user2 = DeviseUser.create(name: 'Leah', email: 'leah@test.com', password: '1234')
 
 game1 = Game.create(game_name: 'seeded_game_1', devise_user_id: 1)
 game2 = Game.create(game_name: 'seeded_game_2', devise_user_id: 2)
