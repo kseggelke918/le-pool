@@ -7,4 +7,5 @@ class DeviseUser < ApplicationRecord
   has_many :games
   validates :name, :email, presence: true 
   validates :email, uniqueness: true
+  validates :password, presence: true 
 end
