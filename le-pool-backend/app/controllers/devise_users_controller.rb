@@ -1,16 +1,16 @@
 class DeviseUsersController < ApplicationController
   def index
-    users = UserResource.all(params)
+    users = DeviseUserResource.all(params)
     respond_with(users)
   end
 
   def show
-    user = UserResource.find(params)
+    user = DeviseUserResource.find(params)
     respond_with(user)
   end
 
   def create
-    user = UserResource.build(params)
+    user = DeviseUserResource.build(params)
 
     if user.save
       render jsonapi: user, status: 201
@@ -20,7 +20,7 @@ class DeviseUsersController < ApplicationController
   end
 
   def update
-    user = UserResource.find(params)
+    user = DeviseUserResource.find(params)
 
     if user.update_attributes
       render jsonapi: user
@@ -30,7 +30,7 @@ class DeviseUsersController < ApplicationController
   end
 
   def destroy
-    user = UserResource.find(params)
+    user = DeviseUserResource.find(params)
 
     if user.destroy
       render jsonapi: { meta: {} }, status: 200
