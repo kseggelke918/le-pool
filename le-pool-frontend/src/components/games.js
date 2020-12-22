@@ -8,13 +8,14 @@ class Games extends Component {
   }
 
   render() {
-    let games = this.state.games;
-    return <div>This would be all the games  </div>;
+    let games = this.state.games.map(game => game.game_name);
+
+    return <div>{games.join(`, `)}</div>;
   }
   
   async componentDidMount(){
     console.log("mounted");
-    let data = await getData(`http://localhost:3000/api/games?sort=id`);
+    let data = await getData(`http://localhost:3000/api/games.json?sort=id`);
     console.log(data);
     // set this.state.games = data
     this.setState({games: data})
@@ -27,10 +28,11 @@ class Games extends Component {
 async function getData(url) {
   // response should be the fetch - await means that we are going to stop and wait for the fetch
   // await only works if async is in front of the function
+  // await turns the promise into the thing that it resolves to
   let response = await fetch(url); 
   let json = await response.json();
 
-  return json 
+  return json.data; 
 }
 
 export default Games;
